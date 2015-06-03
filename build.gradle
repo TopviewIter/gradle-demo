@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.7   // 设置 JDK 版本
+webAppDirName = 'WebContent'    // 设置 WebApp 根目录
+//sourceSets.main.java.srcDir 'src'   // 设置 Java 源码所在目录
+
+// 设置 maven 库地址
+repositories {
+	maven { url 'file:///E:/maven/repository/maven' }
+	//maven { url 'http://localhost:8081/nexus/content/groups/public' } // 自定义库地址
+	mavenCentral() // 中央库
+}
+
+dependencies {
+   providedCompile 'javax.servlet:servlet-api:2.5'
+   runtime 'javax.servlet:jstl:1.1.2'
+   compile 'org.beetl:beetl-core:2.2.2'
+   compile 'junit:junit:4.12'
+}
